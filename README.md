@@ -1,4 +1,4 @@
-# frontend
+# Diary
 
 ## Project setup
 ```

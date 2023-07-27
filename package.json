@@ -1,15 +1,16 @@
 {
-  "name": "frontend",
+  "name": "Diary",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 3000",
+    "serve": "vue-cli-service serve --open --port 3000",
     "build": "vue-cli-service build --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
