@@ -6,7 +6,7 @@
     <table class="w3-table-all">
       <thead>
       <tr>
-        <th>No</th>
+        <th>No.</th>
         <th>Title</th>
         <th>Author</th>
         <th>CreatedAt</th>
@@ -65,7 +65,7 @@ export default {
       page: this.$route.query.page ? this.$route.query.page : 1,
       size: this.$route.query.page_size ? this.$route.query.page_size : 10,
       keyword: this.$route.query.keyword,
-      paginavigation: function() {
+      paginavigation: function () {
         let pageNumber = [];
         let startPage = this.paging.start_page;
         let endPage = this.paging.end_page;
@@ -81,26 +81,22 @@ export default {
   },
   methods: {
     fnGetList() {
-      this.list = [
-        {
-          "idx":1,
-          "title": "제목1",
-          "author": "작성자1",
-          "created_at": "작성일시1"
-        },
-        {
-          "idx":1,
-          "title": "제목1",
-          "author": "작성자1",
-          "created_at": "작성일시1"
-        },
-        {
-          "idx":1,
-          "title": "제목1",
-          "author": "작성자1",
-          "created_at": "작성일시1"
+      this.requestBody = {
+        page: this.page,
+        page_size: this.size,
+        keyword: this.keyword
+      }
+
+      this.$axios.get(this.$serverUrl + '/boards', {
+        params: this.requestBody,
+        headers: {}
+      }).then((res) => {
+        this.list = res.data
+      }).catch((err) => {
+        if (err.message.indexOf('Network Error') > -1) {
+          alert('게시글 목록을 가져오는데 실패하였습니다.')
         }
-      ]
+      })
     }
   }
 }
