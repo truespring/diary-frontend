@@ -6,8 +6,7 @@
     </div>
     <div class="board-contents">
       <input type="text" v-model="title" class="w3-input w3-border" placeholder="제목을 입력해주세요.">
-      <input type="text" v-model="author" class="w3-input w3-border" placeholder="작성자를 입력해주세요."
-             v-if="idx === undefined">
+      <input type="text" v-model="author" class="w3-input w3-border" placeholder="작성자를 입력해주세요." v-if="idx === undefined">
     </div>
     <div class="board-contents">
       <textarea id="" cols="30" rows="10" v-model="contents" class="w3-input w3-border" style="resize: none;">
@@ -24,7 +23,7 @@
 export default {
   data() {
     return {
-      requestBody: {},
+      requestBody: this.$route.query,
       idx: this.$route.query.idx,
 
       title: '',

@@ -28,7 +28,7 @@
 export default {
   data() {
     return {
-      requestBody: {},
+      requestBody: this.$route.query,
       idx: this.$route.query.idx,
 
       title: '',
