@@ -87,7 +87,7 @@ export default {
         keyword: this.keyword
       }
 
-      this.$axios.get(this.$serverUrl + '/boards', {
+      this.$axios.get(`${this.$serverUrl}/boards`, {
         params: this.requestBody,
         headers: {}
       }).then((res) => {
@@ -97,6 +97,24 @@ export default {
           alert('게시글 목록을 가져오는데 실패하였습니다.')
         }
       })
+    },
+    fnView(idx) {
+      this.requestBody.idx = idx
+      this.$router.push({
+        path: './detail',
+        query: this.requestBody
+      })
+    },
+    fnWrite() {
+      this.$router.push({
+        path: './write'
+      })
+    },
+    fnPage(n) {
+      if (this.page !== n) {
+        this.page = n
+        this.fnGetList()
+      }
     }
   }
 }
